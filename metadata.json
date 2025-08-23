@@ -1,0 +1,5 @@
+{
+  "name": "Grid Explorer NFT Game",
+  "description": "A simple grid-based exploration game where you collect resources and return them home. This is a prototype concept for an NFT game, recreated as a client-side React application.",
+  "requestFramePermissions": []
+}
