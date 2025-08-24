@@ -1,4 +1,3 @@
-
 import { useState, useCallback, useEffect } from 'react';
 import { GameState, Position, Direction } from '../types';
 import { BOARD_WIDTH, BOARD_HEIGHT } from '../constants';
@@ -20,11 +19,11 @@ const getInitialState = (): GameState => {
     const resourcePos = getRandomPosition([homePos, playerPos]);
 
     return {
-        player: { x: playerPos.x, y: playerPos.y, score: 0 },
+        player: { x: playerPos.x, y: playerPos.y, score: 0, hasResource: false },
         resource: resourcePos,
         home: homePos,
         field: { width: BOARD_WIDTH, height: BOARD_HEIGHT },
-        statusMessage: 'Exploration started. Find the gem!',
+        statusMessage: 'Exploration started. Find the 💎!',
     };
 };
 
@@ -42,33 +41,33 @@ export const useGameLogic = () => {
                 case Direction.RIGHT: x = Math.min(BOARD_WIDTH - 1, x + 1); break;
             }
 
-            let newScore = currentGame.player.score;
-            let newResourcePos = { ...currentGame.resource };
+            const { player, resource, home } = currentGame;
+            let newPlayerState = { ...player, x, y };
+            let newResourceState = resource;
             let newStatus = 'Exploring...';
-            
+
             // Check for resource collection
-            if (x === currentGame.resource.x && y === currentGame.resource.y) {
-                newScore++;
-                newResourcePos = getRandomPosition([
-                    { x, y },
-                    currentGame.home
-                ]);
-                newStatus = '💎 Resource collected! +1 point.';
+            if (resource && !player.hasResource && x === resource.x && y === resource.y) {
+                newPlayerState.hasResource = true;
+                newResourceState = null;
+                newStatus = '💎 Resource collected! Take it back to the 🏠.';
             } 
             // Check if at home
-            else if (x === currentGame.home.x && y === currentGame.home.y) {
-                 newStatus = '🏠 Back at home base. Rest and resupply!';
+            else if (x === home.x && y === home.y) {
+                 if (player.hasResource) {
+                     newPlayerState.score++;
+                     newPlayerState.hasResource = false;
+                     newResourceState = getRandomPosition([ { x, y } ]);
+                     newStatus = '✅ Resource delivered! +1 point. A new 💎 has appeared.';
+                 } else {
+                     newStatus = '🏠 Welcome home. Go find a resource!';
+                 }
             }
 
             return {
                 ...currentGame,
-                player: {
-                    ...currentGame.player,
-                    x,
-                    y,
-                    score: newScore,
-                },
-                resource: newResourcePos,
+                player: newPlayerState,
+                resource: newResourceState,
                 statusMessage: newStatus,
             };
         });

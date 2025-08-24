@@ -1,4 +1,3 @@
-
 export interface Position {
   x: number;
   y: number;
@@ -6,11 +5,12 @@ export interface Position {
 
 export interface Player extends Position {
   score: number;
+  hasResource: boolean;
 }
 
 export interface GameState {
   player: Player;
-  resource: Position;
+  resource: Position | null;
   home: Position;
   field: {
     width: number;

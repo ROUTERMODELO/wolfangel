@@ -1,7 +1,6 @@
-
 import React from 'react';
 import { GameState } from '../types';
-import { PLAYER_CHAR, RESOURCE_CHAR, HOME_CHAR, EMPTY_CHAR } from '../constants';
+import { PLAYER_CHAR, PLAYER_CARRYING_CHAR, RESOURCE_CHAR, HOME_CHAR, EMPTY_CHAR } from '../constants';
 
 interface GameBoardProps {
     gameState: GameState;
@@ -11,8 +10,10 @@ export const GameBoard: React.FC<GameBoardProps> = ({ gameState }) => {
     const { player, resource, home, field } = gameState;
 
     const renderCellContent = (x: number, y: number) => {
-        if (x === player.x && y === player.y) return PLAYER_CHAR;
-        if (x === resource.x && y === resource.y) return RESOURCE_CHAR;
+        if (x === player.x && y === player.y) {
+            return player.hasResource ? PLAYER_CARRYING_CHAR : PLAYER_CHAR;
+        }
+        if (resource && x === resource.x && y === resource.y) return RESOURCE_CHAR;
         if (x === home.x && y === home.y) return HOME_CHAR;
         return EMPTY_CHAR;
     };

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { GameBoard } from './components/GameBoard';
 import { InfoPanel } from './components/InfoPanel';
@@ -27,7 +26,7 @@ export default function App(): React.ReactNode {
                     <p>Use W, A, S, D or the buttons to move.</p>
                     <p>Collect 💎 and bring them back to your 🏠.</p>
                      <div className="flex justify-center mt-4">
-                        <a href="https://github.com/your-repo" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-cyan-400 transition-colors">
+                        <a href="https://github.com/google-gemini/web-prototypes/tree/main/grid-explorer" target="_blank" rel="noopener noreferrer" className="text-slate-500 hover:text-cyan-400 transition-colors" aria-label="View source on GitHub">
                             <GithubIcon />
                         </a>
                     </div>

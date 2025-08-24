@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { Direction } from '../types';
 import { ArrowUpIcon, ArrowLeftIcon, ArrowDownIcon, ArrowRightIcon } from './Icons';
@@ -22,21 +21,28 @@ export const Controls: React.FC<ControlsProps> = ({ onMove }) => {
     return (
         <div className="flex justify-center items-center">
             <div className="grid grid-cols-3 gap-2 w-48">
+                {/* Row 1 */}
                 <div />
                 <ControlButton onClick={() => onMove(Direction.UP)} aria-label="Move Up">
                     <ArrowUpIcon />
                 </ControlButton>
                 <div />
 
+                {/* Row 2 */}
                 <ControlButton onClick={() => onMove(Direction.LEFT)} aria-label="Move Left">
                     <ArrowLeftIcon />
                 </ControlButton>
-                <ControlButton onClick={() => onMove(Direction.DOWN)} aria-label="Move Down">
-                    <ArrowDownIcon />
-                </ControlButton>
+                <div />
                 <ControlButton onClick={() => onMove(Direction.RIGHT)} aria-label="Move Right">
                     <ArrowRightIcon />
                 </ControlButton>
+
+                {/* Row 3 */}
+                <div />
+                <ControlButton onClick={() => onMove(Direction.DOWN)} aria-label="Move Down">
+                    <ArrowDownIcon />
+                </ControlButton>
+                <div />
             </div>
         </div>
     );
