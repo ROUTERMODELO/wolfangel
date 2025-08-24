@@ -1,9 +1,10 @@
+
 import React from 'react';
-import { GameBoard } from './components/GameBoard';
-import { InfoPanel } from './components/InfoPanel';
-import { Controls } from './components/Controls';
-import { useGameLogic } from './hooks/useGameLogic';
-import { GithubIcon } from './components/Icons';
+import { GameBoard } from './components/GameBoard.tsx';
+import { InfoPanel } from './components/InfoPanel.tsx';
+import { Controls } from './components/Controls.tsx';
+import { useGameLogic } from './hooks/useGameLogic.ts';
+import { GithubIcon } from './components/Icons.tsx';
 
 export default function App(): React.ReactNode {
     const { gameState, movePlayer } = useGameLogic();

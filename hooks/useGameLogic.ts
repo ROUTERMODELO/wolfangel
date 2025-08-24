@@ -1,6 +1,7 @@
+
 import { useState, useCallback, useEffect } from 'react';
-import { GameState, Position, Direction } from '../types';
-import { BOARD_WIDTH, BOARD_HEIGHT } from '../constants';
+import { GameState, Position, Direction } from '../types.ts';
+import { BOARD_WIDTH, BOARD_HEIGHT } from '../constants.ts';
 
 const getRandomPosition = (existingPositions: Position[] = []): Position => {
     let newPos: Position;

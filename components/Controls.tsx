@@ -1,6 +1,7 @@
+
 import React from 'react';
-import { Direction } from '../types';
-import { ArrowUpIcon, ArrowLeftIcon, ArrowDownIcon, ArrowRightIcon } from './Icons';
+import { Direction } from '../types.ts';
+import { ArrowUpIcon, ArrowLeftIcon, ArrowDownIcon, ArrowRightIcon } from './Icons.tsx';
 
 interface ControlsProps {
     onMove: (direction: Direction) => void;

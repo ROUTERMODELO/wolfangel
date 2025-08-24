@@ -1,6 +1,7 @@
+
 import React from 'react';
-import { GameState } from '../types';
-import { PLAYER_CHAR, PLAYER_CARRYING_CHAR, RESOURCE_CHAR, HOME_CHAR, EMPTY_CHAR } from '../constants';
+import { GameState } from '../types.ts';
+import { PLAYER_CHAR, PLAYER_CARRYING_CHAR, RESOURCE_CHAR, HOME_CHAR, EMPTY_CHAR } from '../constants.ts';
 
 interface GameBoardProps {
     gameState: GameState;
